@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Infográfica: Tu Aventura por Europa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F9FF;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #00A1E4;
+            border: 4px solid #F0F9FF;
+            top: 20px;
+            left: -10px;
+            z-index: 1;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #99DBF7;
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <header class="bg-[#00A1E4] text-white text-center p-8 shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight">Guía Esencial para Conquistar Europa</h1>
+        <p class="mt-2 text-lg font-light">Una Aventura de 10 Días, 2 Países y 9 Ciudades Inolvidables</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#00A1E4]">Tu Viaje en Cifras</h2>
+                <p class="text-lg mt-2">Un vistazo rápido a la gran aventura que te espera.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-6xl font-black text-[#33B5E5]">10</p>
+                    <p class="text-xl font-bold mt-2">Días Totales</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-6xl font-black text-[#33B5E5]">2</p>
+                    <p class="text-xl font-bold mt-2">Países y Estados</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-6xl font-black text-[#33B5E5]">9</p>
+                    <p class="text-xl font-bold mt-2">Ciudades Mágicas</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center mb-4">Distribución de Noches por País</h3>
+                    <p class="text-center text-sm mb-4">Visualiza cómo se reparte tu tiempo entre las diferentes culturas que visitarás. España es tu base principal, con paradas clave en Francia e Italia.</p>
+                    <div class="chart-container">
+                        <canvas id="nightsPerCountryChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center mb-4">Ritmo del Viaje</h3>
+                    <p class="text-center text-sm mb-4">Este es un viaje de ritmo rápido, diseñado para ver lo máximo posible. Casi la mitad de los días incluyen traslados, ¡prepárate para la acción!</p>
+                    <div class="chart-container">
+                        <canvas id="paceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="checklist" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#00A1E4]">Preparativos: Tu Checklist para un Viaje sin Estrés</h2>
+                <p class="text-lg mt-2">Como viajero primerizo a Europa, estos consejos son clave para tu tranquilidad.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl mb-3">📜</p>
+                    <h3 class="font-bold text-lg mb-2">Documentación Esencial</h3>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><b>Pasaporte:</b> Revisa que tenga al menos 6 meses de vigencia desde tu fecha de regreso.</li>
+                        <li><b>Copias Digitales:</b> Guarda fotos de tu pasaporte y documentos en tu email o nube.</li>
+                        <li><b>Seguro de Viaje:</b> Indispensable. Confirma tu cobertura para emergencias médicas y cancelaciones.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl mb-3">💶/💷</p>
+                    <h3 class="font-bold text-lg mb-2">Dinero y Pagos</h3>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><b>Dos Monedas:</b> Necesitarás Euros (€) para la mayoría de países y Libras Esterlinas (£) para Londres.</li>
+                        <li><b>Tarjetas:</b> Notifica a tu banco sobre tu viaje para evitar bloqueos. Prefiere tarjetas sin comisiones internacionales.</li>
+                        <li><b>Efectivo:</b> Lleva siempre algo de efectivo (unos 100€/50£) para pequeños gastos.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl mb-3">🎒</p>
+                    <h3 class="font-bold text-lg mb-2">Equipaje Inteligente</h3>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><b>Viaja Ligero:</b> Una maleta mediana es suficiente. Recuerda que la moverás constantemente.</li>
+                        <li><b>Vístete por Capas:</b> El clima en octubre/noviembre es variable. Lleva camisetas, suéteres y una chaqueta impermeable.</li>
+                        <li><b>Calzado Cómodo:</b> ¡Es lo más importante! Caminarás muchísimo. Lleva dos pares ya usados.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl mb-3">📱</p>
+                    <h3 class="font-bold text-lg mb-2">Tecnología y Conectividad</h3>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><b>Adaptador Universal:</b> Europa continental usa el enchufe tipo F (dos clavijas redondas) y Reino Unido el tipo G (tres clavijas rectangulares).</li>
+                        <li><b>Power Bank:</b> Una batería externa es tu mejor aliada para los largos días de turismo.</li>
+                        <li><b>eSIM o SIM Local:</b> Compra un plan de datos para tener conexión. Las eSIM son muy convenientes.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl mb-3">⚕️</p>
+                    <h3 class="font-bold text-lg mb-2">Salud y Seguridad</h3>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><b>Botiquín Básico:</b> Analgésicos, tiritas, y cualquier medicamento personal que necesites.</li>
+                        <li><b>Mantente Alerta:</b> Ten cuidado con tus pertenencias en lugares turísticos y transporte público para evitar carteristas.</li>
+                        <li><b>Agua del Grifo:</b> Es potable y de buena calidad en todos los países que visitas. Lleva una botella reutilizable.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-4xl mb-3">🇪🇺</p>
+                    <h3 class="font-bold text-lg mb-2">Cultura y Etiqueta</h3>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><b>Saludos:</b> Aprende a decir "Hola" y "Gracias" en el idioma local. Es un gesto muy apreciado.</li>
+                        <li><b>Propinas:</b> No son tan obligatorias como en otras partes del mundo. Generalmente se redondea la cuenta o se deja un 5-10% por buen servicio.</li>
+                        <li><b>Transporte Público:</b> Es excelente. Úsalo para moverte en tus tiempos libres. Valida siempre tu billete.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="itinerary" class="mb-16">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#00A1E4]">Tu Itinerario Detallado</h2>
+                <p class="text-lg mt-2">Sigue tu ruta día por día a través del corazón de Europa.</p>
+            </div>
+            <div class="relative pl-5 timeline-container">
+                <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 1 (27 Jul): Madrid, España 🇪🇸</h4>
+                    <p class="text-sm">Llegada y tour por la capital española: Gran Vía, Plaza Mayor y más. Tarde libre. <br><b>Hotel: Holiday Inn Madrid - Las Tablas</b></p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 1 (27 Jul)" data-city="Madrid" data-activities="Gran Vía, Plaza Mayor">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="Madrid">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+                 <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 2 (28 Jul): Rumbo a Italia 🇮🇹</h4>
+                    <p class="text-sm">Viaje con destino hacia Venecia, con traslado en barco privado a la famosa isla de San Marcos. <br><b>Hotel: Park Hotel Villa Fiorita</b></p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 2 (28 Jul)" data-city="Venecia" data-activities="traslado en barco privado, isla de San Marcos">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="Venecia">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 3 (29 Jul): Pisa, Visita a la Plaza de los Milagros 🇮🇹</h4>
+                    <p class="text-sm">Visitaremos un complejo donde se encuentra la famosa Torre Inclinada, el Baptisterio y el Camposanto. <br><b>Hotel: NilHotel | Centro Congressi</b></p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 3 (29 Jul)" data-city="Pisa" data-activities="Torre Inclinada, Baptisterio, Camposanto">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="Pisa">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 3 (29 Jul): Florencia, Italia 🇮🇹</h4>
+                    <p class="text-sm">Visita panoramica con guia local a el Duomo de Santa María del Flore, el Campanario, el Baptisterio y mucho más! <br><b>Hotel: NilHotel | Centro Congressi</b></p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 3 (29 Jul)" data-city="Florencia" data-activities="Duomo de Santa María del Flore, Campanario, Baptisterio">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="Florencia">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 4 (30 Jul): Rumbo a Asis 🇮🇹</h4>
+                    <p class="text-sm">Visita guiada por los lugares emblemáticos que conmemoran a San Francisco y el nacimiento de su movimiento. Incluye la Basilica Papal, Iglesia San Damián y más! <br><b>Hotel: Ristorante Villa Elda</b></p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 4 (30 Jul)" data-city="Asis" data-activities="Basilica Papal, Iglesia San Damián">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="Asis">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 5 (31 Jul): Porto San Giorgio - Rosero Degli Abruzzi 🇮🇹</h4>
+                    <p class="text-sm">Visita de la Basilica Santa Maria de los Angeles, y hacia la costa Adriatica para conocer el Centro Neocatecumenal Internacional "Domus Galileae". Ehhh bueno, al final hay tarde de playa. <br><b>Hotel: Grand Hotel Don Juan</b> </p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 5 (31 Jul)" data-city="Porto San Giorgio" data-activities="Basilica Santa Maria de los Angeles, Centro Neocatecumenal Internacional Domus Galileae, tarde de playa">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="Porto San Giorgio">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 6 (1 Ago): Rosero Degli Abruzzi - San Giovanni 🇮🇹</h4>
+                    <p class="text-sm">Salida hacia San Giovanni. Visitaremos el convento de los Padres Capuchinos, la Iglesia de Nuestra Señora de las Gracias, la Iglesia Nueva, el Via Crucis Monumental e inclreíbles lugares sagrados. <br><b>Hotel: ALI HOTELS San Giovanni Rotondo Palace</b></p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 6 (1 Ago)" data-city="San Giovanni" data-activities="convento de los Padres Capuchinos, Iglesia de Nuestra Señora de las Gracias, Iglesia Nueva, Via Crucis Monumental">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="San Giovanni">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 pb-8 timeline-item">
+                    <h4 class="font-bold text-lg">DÍA 7 (2 Ago): San Giovanni - Roma Eterna 🇮🇹</h4>
+                    <p class="text-sm">Viaje a Roma. Días para sumergirse en la historia del Coliseo, los Foros Romanos y más. Conoceremos Torbergata, habrá Vigilia y tendremos una Cena Picnic. <br><b>Hotel: Sheraton Rome Parco de' Medici</b> </p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-suggest-btn" data-day="DÍA 7 (2 Ago)" data-city="Roma" data-activities="Coliseo, Foros Romanos, Torbergata, Vigilia, Cena Picnic">✨ Sugerencias para este día</button>
+                        <button class="px-4 py-2 bg-[#00A1E4] text-white rounded-lg shadow hover:bg-[#33B5E5] transition duration-300 text-sm gemini-food-btn" data-city="Roma">✨ Gastronomía Local</button>
+                    </div>
+                    <div class="gemini-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando sugerencias...</p>
+                    </div>
+                    <div class="gemini-food-response mt-2 p-3 bg-blue-50 rounded-lg text-sm hidden"></div>
+                    <div class="gemini-food-loading mt-2 text-center hidden">
+                        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00A1E4] mx-auto"></div>
+                        <p class="text-xs text-slate-500 mt-1">Generando gastronomía...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="destinations" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#00A1E4]">Zoom a tus Destinos Clave</h2>
+                <p class="text-lg mt-2">Conoce un poco más sobre las ciudades principales y los hoteles donde te alojarás.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <article class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-3">Madrid, España 🇪🇸</h3>
+                    <p class="mb-3 text-sm"><b>Hotel Holiday Inn Madrid - Las Tablas:</b> Un hotel moderno en una zona de negocios, bien conectado con el centro de Madrid a través del transporte público. Ideal para descansar después de un día de exploración.</p>
+                    <h4 class="font-bold mb-1">Imperdibles del tour:</h4>
+                    <p class="text-sm mb-3">Plaza Mayor (corazón del Madrid antiguo), Gran Vía (la "Broadway" madrileña), Puerta de Alcalá.</p>
+                    <h4 class="font-bold mb-1">Dato curioso:</h4>
+                    <p class="text-sm">Madrid es una de las capitales más altas de Europa, situada a más de 650 metros sobre el nivel del mar.</p>
+                </article>
+                <article class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-3">Roma, Italia 🇮🇹</h3>
+                    <p class="mb-3 text-sm"><b>Hotel Sheraton Rome Parco de' Medici:</b> Un gran resort con amplias instalaciones, ubicado en las afueras de Roma. Es una base cómoda para grupos, con conexiones al centro de la ciudad.</p>
+                    <h4 class="font-bold mb-1">Imperdibles del tour:</h4>
+                    <p class="text-sm mb-3">Coliseo Romano, Foros Romanos, Basílica de San Pedro (Vaticano). ¡Lanza una moneda en la Fontana di Trevi!</p>
+                    <h4 class="font-bold mb-1">Dato curioso:</h4>
+                    <p class="text-sm">Se estima que el Coliseo podía albergar entre 50,000 y 80,000 espectadores para sus famosos juegos y espectáculos.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 bg-slate-800 text-white mt-8">
+        <p class="font-bold">¡Disfruta de un viaje inolvidable por Europa!</p>
+        <p class="text-xs mt-2 text-slate-400">Esta guía fue creada para ser tu compañera de viaje. ¡Buen camino!</p>
+    </footer>
+    
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+        
+        const nightsPerCountryData = {
+            labels: ['España', 'Italia'],
+            datasets: [{
+                label: 'Noches por País',
+                data: [2, 8],
+                backgroundColor: ['#00A1E4', '#33B5E5'],
+                borderColor: '#FFFFFF',
+                borderWidth: 2
+            }]
+        };
+
+        const nightsPerCountryCtx = document.getElementById('nightsPerCountryChart').getContext('2d');
+        new Chart(nightsPerCountryCtx, {
+            type: 'bar',
+            data: nightsPerCountryData,
+            options: {
+                ...commonChartOptions,
+                indexAxis: 'y',
+                 plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                           color: '#e2e8f0'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        const paceData = {
+            labels: ['Días con Traslado', 'Días de Estancia/Llegada'],
+            datasets: [{
+                label: 'Ritmo del Viaje',
+                data: [6, 4],
+                backgroundColor: ['#00A1E4', '#66C8E6'],
+                borderColor: '#FFFFFF',
+                borderWidth: 4,
+                hoverOffset: 4
+            }]
+        };
+
+        const paceCtx = document.getElementById('paceChart').getContext('2d');
+        new Chart(paceCtx, {
+            type: 'doughnut',
+            data: paceData,
+            options: {
+                 ...commonChartOptions
+            }
+        });
+
+        // Gemini API Integration
+        const apiKey = ""; // Leave this as-is. Canvas will provide it at runtime.
+
+        const cityLanguages = {
+            'Madrid': 'español',
+            'Venecia': 'italiano',
+            'Pisa': 'italiano',
+            'Florencia': 'italiano',
+            'Asis': 'italiano',
+            'Porto San Giorgio': 'italiano',
+            'Rosero Degli Abruzzi': 'italiano',
+            'San Giovanni': 'italiano',
+            'Roma': 'italiano'
+        };
+
+        document.querySelectorAll('.gemini-suggest-btn').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                const day = event.target.dataset.day;
+                const city = event.target.dataset.city;
+                const activities = event.target.dataset.activities;
+                const language = cityLanguages[city] || 'español'; // Default to Spanish if not found
+
+                const parentDiv = event.target.closest('.timeline-item');
+                const responseDiv = parentDiv.querySelector('.gemini-response');
+                const loadingDiv = parentDiv.querySelector('.gemini-loading');
+
+                responseDiv.classList.add('hidden');
+                loadingDiv.classList.remove('hidden');
+
+                const prompt = `Como experto en viajes para un viajero primerizo, dame:
+- Un 'Sabías que...' interesante sobre ${city}.
+- Una 'Frase útil' en ${language} para usar en ${city}.
+- Un 'Consejo extra' para un viajero que visitará ${city} el ${day} con actividades como ${activities}.
+Formatea la respuesta con cada punto en una línea separada, empezando con el título del punto.`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = { contents: chatHistory };
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        responseDiv.innerHTML = text.replace(/\n/g, '<br>'); // Display newlines as breaks
+                        responseDiv.classList.remove('hidden');
+                    } else {
+                        responseDiv.innerHTML = 'Lo siento, no pude generar sugerencias en este momento. Inténtalo de nuevo.';
+                        responseDiv.classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error('Error al llamar a la API de Gemini:', error);
+                    responseDiv.innerHTML = 'Hubo un error al obtener las sugerencias. Por favor, inténtalo más tarde.';
+                    responseDiv.classList.remove('hidden');
+                } finally {
+                    loadingDiv.classList.add('hidden');
+                }
+            });
+        });
+
+        document.querySelectorAll('.gemini-food-btn').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                const city = event.target.dataset.city;
+
+                const parentDiv = event.target.closest('.timeline-item');
+                const responseDiv = parentDiv.querySelector('.gemini-food-response');
+                const loadingDiv = parentDiv.querySelector('.gemini-food-loading');
+
+                responseDiv.classList.add('hidden');
+                loadingDiv.classList.remove('hidden');
+
+                const prompt = `Como experto en gastronomía local, dame 3-5 platos típicos de ${city} que un viajero primerizo debería probar, con una breve descripción de cada uno. Formatea la respuesta como una lista numerada.`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = { contents: chatHistory };
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        responseDiv.innerHTML = text.replace(/\n/g, '<br>'); // Display newlines as breaks
+                        responseDiv.classList.remove('hidden');
+                    } else {
+                        responseDiv.innerHTML = 'Lo siento, no pude generar recomendaciones de gastronomía en este momento. Inténtalo de nuevo.';
+                        responseDiv.classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error('Error al llamar a la API de Gemini:', error);
+                    responseDiv.innerHTML = 'Hubo un error al obtener las recomendaciones de gastronomía. Por favor, inténtalo más tarde.';
+                    responseDiv.classList.remove('hidden');
+                } finally {
+                    loadingDiv.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
